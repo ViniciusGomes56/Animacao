@@ -1,0 +1,245 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    background-color: black;
+}
+
+/* Area do jogo */
+.jogo {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cenario */
+.cenario {
+    width: 300%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cenario img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+/* Personagem */
+.personagem {
+    width: 180px;
+    height: 280px;
+    position: absolute;
+    bottom: 90px;
+    left: 40%;
+}
+
+/* Imagens do personagem */
+.personagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    transform: scale(1.5);
+}
+
+/* Personagem parado */
+.parado {
+    display: block;
+}
+
+/* Animacoes escondidas */
+.andando,
+.especial {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.andando img,
+.especial img {
+    display: none;
+}
+
+/* ========================= */
+/* MOVIMENTO */
+/* ========================= */
+
+.personagem.andar .parado {
+    display: none;
+}
+
+.personagem.andar .andando {
+    display: block;
+}
+
+.personagem.andar .andando img {
+    display: block;
+    opacity: 0;
+}
+
+/* Imagem 1 */
+.personagem.andar .andando img:nth-child(1) {
+    animation: andar1 0.6s infinite;
+     transform: scale(2.0);
+}
+
+/* Imagem 2 */
+.personagem.andar .andando img:nth-child(2) {
+    animation: andar2 0.6s infinite;
+     transform: scale(2.0);
+}
+
+/* Imagem 3 */
+.personagem.andar .andando img:nth-child(3) {
+    animation: andar3 0.6s infinite;
+     transform: scale(2.0);
+}
+
+@keyframes andar1 {
+    0%, 33.32% {
+        opacity: 1;
+    }
+    33.33%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes andar2 {
+    0%, 33.32% {
+        opacity: 0;
+    }
+    33.33%, 66.65% {
+        opacity: 1;
+    }
+    66.66%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes andar3 {
+    0%, 66.65% {
+        opacity: 0;
+    }
+    66.66%, 100% {
+        opacity: 1;
+    }
+}
+
+/* ========================= */
+/* ESPECIAL */
+/* ========================= */
+
+.personagem.atacar .parado,
+.personagem.atacar .andando {
+    display: none;
+}
+
+.personagem.atacar .especial {
+    display: block;
+}
+
+.personagem.atacar .especial img {
+    display: block;
+    opacity: 0;
+}
+
+/* Imagem 1 */
+.personagem.atacar .especial img:nth-child(1) {
+    animation: especial1 0.8s;
+    transform: scale(2.0);
+}
+
+/* Imagem 2 */
+.personagem.atacar .especial img:nth-child(2) {
+    animation: especial2 0.8s;
+    transform: scale(2.0);
+}
+
+/* Imagem 3 */
+.personagem.atacar .especial img:nth-child(3) {
+    animation: especial3 0.8s;
+    transform: scale(2.1);
+}
+
+/* Imagem 4 */
+.personagem.atacar .especial img:nth-child(4) {
+    animation: especial4 0.8s;
+    transform: scale(2.3);
+}
+
+
+.personagem.atacar .especial img {
+    display: block;
+    opacity: 0;
+    transform: scale(1.5);
+}
+
+
+@keyframes especial1 {
+    0%, 24.99% {
+        opacity: 1;
+    }
+    25%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes especial2 {
+    0%, 24.99% {
+        opacity: 0;
+    }
+    25%, 49.99% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes especial3 {
+    0%, 49.99% {
+        opacity: 0;
+    }
+    50%, 74.99% {
+        opacity: 1;
+    }
+    75%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes especial4 {
+    0%, 74.99% {
+        opacity: 0;
+    }
+    75%, 99.99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ========================= */
+/* DIRECAO */
+/* ========================= */
+
+/* Direita: imagem original */
+.personagem.direita {
+    transform: scaleX(1);
+}
+
+/* Esquerda: imagem espelhada */
+.personagem.esquerda {
+    transform: scaleX(-1);
+}
